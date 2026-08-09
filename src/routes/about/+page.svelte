@@ -25,7 +25,7 @@
     align-items: center;
     gap: 3rem;
     width: 100%;
-    padding: 4rem 0;
+    padding: 1rem 0;
   }
 
   @media (min-width: 768px) {
@@ -39,9 +39,7 @@
   }
 
   .page-heading {
-    font-family: "Playfair Display", Georgia, serif;
     font-size: clamp(1.75rem, 4vw, 2.5rem);
-    font-weight: 400;
     margin: 0 0 1.5rem;
   }
 
@@ -68,7 +66,6 @@
   }
 
   .image-placeholder span {
-    font-family: "Playfair Display", Georgia, serif;
     font-size: 0.875rem;
     letter-spacing: 0.15em;
   }

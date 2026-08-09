@@ -16,13 +16,11 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    padding-top: 4rem;
+    padding-top: 1rem;
   }
 
   .page-heading {
-    font-family: "Playfair Display", Georgia, serif;
     font-size: clamp(1.75rem, 4vw, 2.5rem);
-    font-weight: 400;
     margin: 0 0 2.5rem;
   }
 </style>

@@ -69,10 +69,22 @@
 
   :global(body) {
     font-family: "Cormorant Garamond", Georgia, serif;
+    /* font-weight: 700; */
     background-color: var(--color-beige);
     color: var(--color-black);
     margin: 0;
     min-height: 100vh;
+  }
+
+  /* GLOBAL TYPOGRAPHY */
+  :global(h1) {
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  :global(p) {
+    font-weight: 700;
+    line-height: 1.6;
   }
 
   .page-wrapper {
@@ -80,7 +92,6 @@
     flex-direction: column;
     min-height: 100vh;
   }
-
   /* HEADER */
   header {
     border-bottom: 1px solid var(--color-black);
@@ -120,7 +131,6 @@
   }
 
   nav a {
-    font-family: "Playfair Display", Georgia, serif;
     font-size: 1.125rem;
     padding: 0.5rem 1.5rem;
     border: 1px solid transparent;
@@ -152,7 +162,6 @@
     border-top: 1px solid var(--color-black);
     padding: 1.5rem;
     text-align: center;
-    font-family: "Playfair Display", Georgia, serif;
     font-size: 0.875rem;
     letter-spacing: 0.15em;
   }
