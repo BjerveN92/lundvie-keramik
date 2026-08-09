@@ -1,11 +1,16 @@
 <script lang="ts">
-  import { page } from '$app/state';
+  import { page } from "$app/state";
+  import logo from "$lib/assets/lundvie_keramik_logo.png";
   let { children } = $props();
 </script>
 
 <svelte:head>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin="anonymous"
+  />
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Cormorant+Garamond:wght@400;500&display=swap"
     rel="stylesheet"
@@ -15,14 +20,28 @@
 <div class="page-wrapper">
   <header>
     <div class="logo-wrapper">
-      <h1 class="logo">KERAMIK &amp; CO</h1>
+      <a href="/" class="logo-link">
+        <img src={logo} alt="Lundvie Keramik" class="logo" />
+      </a>
     </div>
     <nav>
       <ul>
-        <li><a href="/" class:active={page.url.pathname === '/'}>Home</a></li>
-        <li><a href="/about" class:active={page.url.pathname === '/about'}>About</a></li>
-        <li><a href="/pictures" class:active={page.url.pathname === '/pictures'}>Images</a></li>
-        <li><a href="/kontakt" class:active={page.url.pathname === '/kontakt'}>Contact</a></li>
+        <li><a href="/" class:active={page.url.pathname === "/"}>Home</a></li>
+        <li>
+          <a href="/about" class:active={page.url.pathname === "/about"}
+            >About</a
+          >
+        </li>
+        <li>
+          <a href="/pictures" class:active={page.url.pathname === "/pictures"}
+            >Images</a
+          >
+        </li>
+        <li>
+          <a href="/kontakt" class:active={page.url.pathname === "/kontakt"}
+            >Contact</a
+          >
+        </li>
       </ul>
     </nav>
   </header>
@@ -31,9 +50,7 @@
     {@render children()}
   </main>
 
-  <footer>
-    © 2026 KERAMIK &amp; CO
-  </footer>
+  <footer>© 2026 LUNDVIE KERAMIK</footer>
 </div>
 
 <style>
@@ -51,7 +68,7 @@
   }
 
   :global(body) {
-    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-family: "Cormorant Garamond", Georgia, serif;
     background-color: var(--color-beige);
     color: var(--color-black);
     margin: 0;
@@ -77,12 +94,14 @@
     padding: 2.5rem 1.5rem;
   }
 
+  .logo-link {
+    display: block;
+  }
+
   .logo {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: clamp(2.5rem, 6vw, 3.75rem);
-    letter-spacing: 0.15em;
-    font-weight: 400;
-    margin: 0;
+    height: clamp(3.5rem, 8vw, 9.5rem);
+    width: auto;
+    display: block;
   }
 
   nav {
@@ -101,7 +120,7 @@
   }
 
   nav a {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: "Playfair Display", Georgia, serif;
     font-size: 1.125rem;
     padding: 0.5rem 1.5rem;
     border: 1px solid transparent;
@@ -133,7 +152,7 @@
     border-top: 1px solid var(--color-black);
     padding: 1.5rem;
     text-align: center;
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: "Playfair Display", Georgia, serif;
     font-size: 0.875rem;
     letter-spacing: 0.15em;
   }
