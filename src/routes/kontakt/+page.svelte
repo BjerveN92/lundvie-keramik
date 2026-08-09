@@ -15,12 +15,11 @@
     align-items: center;
     text-align: center;
     width: 100%;
-    border-top: 1px solid var(--color-black);
     padding-top: 4rem;
   }
 
   .page-heading {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: "Playfair Display", Georgia, serif;
     font-size: clamp(1.75rem, 4vw, 2.5rem);
     font-weight: 400;
     margin: 0 0 1.5rem;
@@ -36,7 +35,7 @@
     flex-direction: column;
     gap: 0.5rem;
     margin-top: 1.5rem;
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: "Playfair Display", Georgia, serif;
     font-size: 1.125rem;
   }
 </style>

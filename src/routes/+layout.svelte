@@ -57,7 +57,7 @@
   :global(:root) {
     --color-beige: #f1ead9;
     --color-beige-dark: #e3d9bf;
-    --color-black: #1a1a1a;
+    --color-black: #0a0a0a;
     --color-white: #ffffff;
   }
 

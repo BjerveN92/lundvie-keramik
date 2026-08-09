@@ -16,7 +16,6 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    border-top: 1px solid var(--color-black);
     padding-top: 4rem;
   }
 

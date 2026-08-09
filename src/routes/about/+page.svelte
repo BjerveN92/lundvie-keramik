@@ -2,13 +2,13 @@
   <div class="about-text">
     <h1 class="page-heading">Om oss</h1>
     <p>
-      I en liten verkstad på landet har vi i nära fyrtio år arbetat med
-      lera, eld och tålamod. Vad som började som en hobby har blivit ett
-      familjeföretag – och en passion vi gärna delar med er.
+      Lundvie Kermaik har funnits i lennartsfors sedan 1982. Vi som jobbar här
+      är Ole Bjervig och Karin Lundkvist.
     </p>
     <p>
-      Vi använder lokal lera där det går, och våra glasyrer blandas
-      fortfarande för hand efter recept vi förfinat genom åren.
+      Vi drejar brukskermaik och unika ting, främst i stengods. Allt görs för
+      hand och med eget framtagna glasyrer. Numera säljs våra saker endast här
+      direkt från verkstan.
     </p>
   </div>
   <div class="about-image-col">
@@ -25,8 +25,6 @@
     align-items: center;
     gap: 3rem;
     width: 100%;
-    border-top: 1px solid var(--color-black);
-    border-bottom: 1px solid var(--color-black);
     padding: 4rem 0;
   }
 
@@ -41,7 +39,7 @@
   }
 
   .page-heading {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: "Playfair Display", Georgia, serif;
     font-size: clamp(1.75rem, 4vw, 2.5rem);
     font-weight: 400;
     margin: 0 0 1.5rem;
@@ -70,7 +68,7 @@
   }
 
   .image-placeholder span {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: "Playfair Display", Georgia, serif;
     font-size: 0.875rem;
     letter-spacing: 0.15em;
   }
