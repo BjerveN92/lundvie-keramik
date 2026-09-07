@@ -14,18 +14,29 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    width: 100%;
-    padding-top: 1rem;
+    max-width: 32rem;
+    margin: auto;
+    padding: clamp(1.75rem, 4vh, 3rem) clamp(1.5rem, 5vw, 3.5rem);
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur) saturate(140%);
+    -webkit-backdrop-filter: var(--glass-blur) saturate(140%);
+    border: 1px solid var(--glass-border);
+    border-radius: 1.5rem;
+    box-shadow: var(--glass-shadow);
   }
 
   .page-heading {
-    font-size: clamp(1.75rem, 4vw, 2.5rem);
-    margin: 0 0 1.5rem;
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+    margin: 0 0 1.25rem;
+    color: var(--text-color);
+    text-shadow: var(--text-shadow-strong);
   }
 
   .contact p {
-    font-size: 1.125rem;
+    font-size: 1.0625rem;
     margin: 0 0 0.5rem;
+    color: var(--text-color);
+    text-shadow: var(--text-shadow-soft);
   }
 
   .contact-details {
@@ -33,6 +44,8 @@
     flex-direction: column;
     gap: 0.5rem;
     margin-top: 1.5rem;
-    font-size: 1.125rem;
+    font-size: 1.0625rem;
+    color: var(--text-color);
+    text-shadow: var(--text-shadow-soft);
   }
 </style>

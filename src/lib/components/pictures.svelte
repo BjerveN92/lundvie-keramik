@@ -47,7 +47,7 @@
 <style>
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     gap: 1rem;
     width: 100%;
   }
@@ -56,8 +56,18 @@
     all: unset;
     display: block;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: 0.75rem;
     overflow: hidden;
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .thumb:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
   }
 
   .thumb img {
@@ -66,13 +76,13 @@
     object-fit: cover;
     display: block;
     transition:
-      transform 0.2s ease,
-      filter 0.2s ease;
+      transform 0.3s ease,
+      filter 0.3s ease;
   }
 
   .thumb:hover img {
-    transform: scale(1.05);
-    filter: brightness(1.15);
+    transform: scale(1.06);
+    filter: brightness(1.08);
   }
 
   dialog {
@@ -85,6 +95,7 @@
 
   dialog::backdrop {
     background: hsl(0 0% 0% / 0.85);
+    backdrop-filter: blur(6px);
     cursor: zoom-out;
   }
 
@@ -92,7 +103,8 @@
     max-width: 90vw;
     max-height: 90vh;
     object-fit: contain;
-    border-radius: 4px;
+    border-radius: 0.75rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
     display: block;
   }
 
@@ -101,6 +113,7 @@
     font-size: 0.875rem;
     letter-spacing: 0.15em;
     text-align: center;
-    color: var(--color-black);
+    color: var(--text-color);
+    text-shadow: var(--text-shadow-soft);
   }
 </style>
