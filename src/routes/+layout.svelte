@@ -2,21 +2,10 @@
   import { page } from "$app/state";
   import logo from "$lib/assets/lundvie_keramik_logo.png";
   import bgPhoto from "$lib/assets/bkrnd_1.jpg";
+  import "@fontsource-variable/josefin-sans";
+  import "@fontsource-variable/josefin-sans/wght-italic.css";
   let { children } = $props();
 </script>
-
-<svelte:head>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin="anonymous"
-  />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Cormorant+Garamond:wght@400;500&display=swap"
-    rel="stylesheet"
-  />
-</svelte:head>
 
 <div class="page-wrapper" style="--bg-photo: url({bgPhoto});">
   <header>
@@ -61,18 +50,12 @@
     --color-black: #0a0a0a;
     --color-white: #ffffff;
 
-    /* text over photo — kept consistent everywhere so any background
-       photo can be dropped in without the content "skära sig" */
+    /* lines-only look: no panels, just hairlines and ornaments straight on
+       the photo. Light text + a scrim keep it legible on any photo. */
     --text-color: #f8f6f1;
-    --text-shadow-soft: 0 1px 4px rgba(0, 0, 0, 0.4);
-    --text-shadow-strong: 0 2px 16px rgba(0, 0, 0, 0.55);
-
-    /* shared glass system for header / nav / footer / content panels */
-    --glass-bg: rgba(255, 255, 255, 0.1);
-    --glass-bg-strong: rgba(255, 255, 255, 0.18);
-    --glass-border: rgba(255, 255, 255, 0.32);
-    --glass-blur: blur(16px);
-    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.28);
+    --accent: #e6d3a8; /* sand */
+    --line: rgba(248, 246, 241, 0.5);
+    --text-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
   }
 
   :global(*),
@@ -89,21 +72,27 @@
   }
 
   :global(body) {
-    font-family: "Cormorant Garamond", Georgia, serif;
+    font-family: "Gill Sans", "Gill Sans MT", "Gill Sans Nova",
+      "Josefin Sans Variable", sans-serif;
     background-color: var(--color-black);
     color: var(--text-color);
     margin: 0;
+    font-feature-settings: "liga", "kern";
   }
 
-  /* GLOBAL TYPOGRAPHY */
+  /* GLOBAL TYPOGRAPHY — Gill Sans (systemfont), med Josefin Sans som
+     Gill Sans-lik reserv. Rubriker i lätt vikt, kursiva med brett bokstavsavstånd. */
   :global(h1) {
-    font-weight: 700;
+    font-weight: 300;
+    font-style: italic;
     line-height: 1.2;
+    letter-spacing: 0.06em;
   }
 
   :global(p) {
-    font-weight: 700;
-    line-height: 1.6;
+    font-weight: 400;
+    line-height: 1.7;
+    letter-spacing: 0.02em;
   }
 
   .page-wrapper {
@@ -114,10 +103,10 @@
     height: 100dvh;
     overflow: hidden;
     isolation: isolate;
+    text-shadow: var(--text-shadow);
   }
 
-  /* full-bleed background photo + a dark scrim so white text/UI stays
-     legible no matter which photo ends up behind it */
+  /* full-bleed background photo + a dark scrim */
   .page-wrapper::before,
   .page-wrapper::after {
     content: "";
@@ -135,26 +124,19 @@
   .page-wrapper::after {
     background: linear-gradient(
       180deg,
-      rgba(8, 8, 10, 0.55) 0%,
-      rgba(8, 8, 10, 0.18) 28%,
-      rgba(8, 8, 10, 0.18) 72%,
-      rgba(8, 8, 10, 0.6) 100%
+      rgba(8, 8, 10, 0.6) 0%,
+      rgba(8, 8, 10, 0.4) 40%,
+      rgba(8, 8, 10, 0.4) 70%,
+      rgba(8, 8, 10, 0.65) 100%
     );
   }
 
   /* HEADER */
-  header {
-    background: var(--glass-bg);
-    backdrop-filter: var(--glass-blur) saturate(140%);
-    -webkit-backdrop-filter: var(--glass-blur) saturate(140%);
-    border-bottom: 1px solid var(--glass-border);
-  }
-
   .logo-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: clamp(1rem, 3vh, 2.25rem) 1.5rem;
+    padding: clamp(0.75rem, 3vh, 2rem) 1.5rem 0.5rem;
   }
 
   .logo-link {
@@ -162,17 +144,17 @@
   }
 
   .logo {
-    height: clamp(3rem, 7vh, 7rem);
+    height: clamp(56px, 12vh, 110px);
     width: auto;
     display: block;
-    /* faintly white-tinted logo so it still reads against a busy photo */
-    filter: brightness(0) invert(1)
-      drop-shadow(0 2px 10px rgba(0, 0, 0, 0.45));
-    opacity: 0.88;
+    filter: brightness(0) invert(1) drop-shadow(0 2px 10px rgba(0, 0, 0, 0.45));
+    opacity: 0.9;
   }
 
   nav {
-    border-top: 1px solid var(--glass-border);
+    width: min(34rem, 90%);
+    margin: 0 auto;
+    border-bottom: 1px solid var(--line);
   }
 
   nav ul {
@@ -180,63 +162,56 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
+    gap: 0.25rem;
+    padding: 0.5rem 1rem 0.75rem;
     list-style: none;
     margin: 0;
   }
 
   nav a {
-    font-size: 1.0625rem;
-    letter-spacing: 0.03em;
-    padding: 0.5rem 1.5rem;
-    border: 1px solid transparent;
-    border-radius: 999px;
+    font-size: 0.8125rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid transparent;
     text-decoration: none;
     color: var(--text-color);
-    text-shadow: var(--text-shadow-soft);
     display: block;
     transition:
-      border-color 0.2s ease,
-      background-color 0.2s ease;
+      color 0.2s ease,
+      border-color 0.2s ease;
   }
 
-  nav a:hover,
+  nav a:hover {
+    color: var(--accent);
+  }
+
   nav a.active {
-    border-color: var(--glass-border);
-    background: var(--glass-bg-strong);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
+    border-bottom-color: var(--accent);
+    color: var(--accent);
   }
 
   /* MAIN */
   main {
-    position: relative;
     flex: 1;
     min-height: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: clamp(1.25rem, 4vh, 4rem) 1.5rem;
-    max-width: 64rem;
-    margin: 0 auto;
+    padding: clamp(1.25rem, 4vh, 3.5rem) 1.5rem;
     width: 100%;
-    /* safety net: if a page's content is ever taller than the viewport,
-       it scrolls inside main rather than the whole site scrolling */
-    overflow-y: auto;
+    overflow: hidden;
   }
 
   /* FOOTER */
   footer {
-    border-top: 1px solid var(--glass-border);
-    background: var(--glass-bg);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
-    padding: 1rem 1.5rem;
+    border-top: 1px solid var(--line);
+    width: min(34rem, 90%);
+    margin: 0 auto;
+    padding: 0.875rem 1.5rem;
     text-align: center;
-    font-size: 0.8125rem;
-    letter-spacing: 0.15em;
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
     color: var(--text-color);
-    text-shadow: var(--text-shadow-soft);
   }
 </style>

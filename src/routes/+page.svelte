@@ -1,8 +1,10 @@
 <script lang="ts">
+  import Ornament from "$lib/components/ornament.svelte";
 </script>
 
 <section class="hero">
   <p class="subtitle">SEDAN 1985</p>
+  <Ornament />
   <h1 class="hero-heading">
     Handgjord keramik <br /> från vår verkstad till ditt hem
   </h1>
@@ -22,20 +24,17 @@
     max-width: 42rem;
     margin: auto;
     padding: clamp(1.75rem, 4vh, 3rem) clamp(1.5rem, 5vw, 3.5rem);
-    background: var(--glass-bg);
-    backdrop-filter: var(--glass-blur) saturate(140%);
-    -webkit-backdrop-filter: var(--glass-blur) saturate(140%);
-    border: 1px solid var(--glass-border);
-    border-radius: 1.5rem;
-    box-shadow: var(--glass-shadow);
+    /* thin double frame: border + an inset hairline */
+    border: 1px solid var(--line);
+    outline: 1px solid var(--line);
+    outline-offset: -0.5rem;
   }
 
   .subtitle {
     font-size: 0.875rem;
     letter-spacing: 0.3em;
-    margin: 0 0 1rem;
-    color: var(--text-color);
-    text-shadow: var(--text-shadow-soft);
+    margin: 0;
+    color: var(--accent);
   }
 
   .hero-heading {
@@ -43,7 +42,6 @@
     line-height: 1.25;
     margin: 0 0 1.25rem;
     color: var(--text-color);
-    text-shadow: var(--text-shadow-strong);
   }
 
   .hero-body {
@@ -52,7 +50,6 @@
     line-height: 1.625;
     margin: 0;
     color: var(--text-color);
-    text-shadow: var(--text-shadow-soft);
   }
 
   .cta-btn {
@@ -60,14 +57,14 @@
     display: inline-block;
     font-size: 1rem;
     letter-spacing: 0.04em;
-    padding: 0.7rem 2rem;
-    border: 1px solid var(--glass-border);
-    border-radius: 999px;
+    padding: 0.8rem 2.25rem;
+    border: 1px solid var(--line);
     text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 0.8125rem;
     color: var(--text-color);
-    background-color: var(--glass-bg-strong);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
+    background-color: transparent;
     transition:
       background-color 0.2s ease,
       color 0.2s ease,
@@ -75,8 +72,9 @@
   }
 
   .cta-btn:hover {
-    background-color: rgba(255, 255, 255, 0.92);
+    background-color: var(--text-color);
+    border-color: var(--text-color);
     color: var(--color-black);
-    border-color: rgba(255, 255, 255, 0.92);
+    text-shadow: none;
   }
 </style>

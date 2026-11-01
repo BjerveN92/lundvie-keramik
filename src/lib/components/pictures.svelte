@@ -30,12 +30,19 @@
 {#if images.length === 0}
   <p class="empty">Inga bilder hittades.</p>
 {:else}
-  <div class="grid">
-    {#each images as image}
-      <button class="thumb" onclick={() => open(image)}>
-        <img src={image.secure_url} alt={image.public_id} loading="lazy" />
-      </button>
-    {/each}
+  <div class="marquee">
+    <div class="marquee-track">
+      {#each [...images, ...images] as image, i (i)}
+        <button
+          class="thumb"
+          onclick={() => open(image)}
+          aria-hidden={i >= images.length}
+          tabindex={i >= images.length ? -1 : 0}
+        >
+          <img src={image.secure_url} alt={image.public_id} loading="lazy" />
+        </button>
+      {/each}
+    </div>
   </div>
 {/if}
 <dialog bind:this={dialog} onclick={onDialogClick}>
@@ -45,21 +52,68 @@
 </dialog>
 
 <style>
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 1rem;
+  /* --- config: tweak these to change size/speed/spacing of the loop --- */
+  .marquee {
+    /* scales with the screen height so the images fill the space under the
+       header instead of floating in it */
+    --picture-size: clamp(280px, 48dvh, 680px); /* thumbnail width/height */
+    --picture-gap: 1.25rem; /* space between thumbnails */
+    --marquee-speed: 140s; /* time for one full loop — higher = slower */
+
+    overflow: hidden;
     width: 100%;
+    -webkit-mask-image: linear-gradient(
+      90deg,
+      transparent 0,
+      #000 4%,
+      #000 96%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      90deg,
+      transparent 0,
+      #000 4%,
+      #000 96%,
+      transparent 100%
+    );
+  }
+
+  .marquee-track {
+    display: flex;
+    align-items: center;
+    gap: var(--picture-gap);
+    width: max-content;
+    animation: marquee-scroll var(--marquee-speed) linear infinite;
+  }
+
+  .marquee:hover .marquee-track {
+    animation-play-state: paused;
+  }
+
+  @keyframes marquee-scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      /* the track holds the image list twice, so -50% is exactly one loop */
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+      animation: none;
+    }
   }
 
   .thumb {
     all: unset;
+    flex: 0 0 auto;
+    width: var(--picture-size);
     display: block;
     cursor: pointer;
-    border-radius: 0.75rem;
     overflow: hidden;
-    border: 1px solid var(--glass-border);
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 4px 18px rgba(42, 38, 34, 0.25);
     transition:
       transform 0.2s ease,
       box-shadow 0.2s ease;
@@ -109,11 +163,9 @@
   }
 
   .empty {
-    font-family: 'Playfair Display', Georgia, serif;
     font-size: 0.875rem;
     letter-spacing: 0.15em;
     text-align: center;
     color: var(--text-color);
-    text-shadow: var(--text-shadow-soft);
   }
 </style>
