@@ -1,12 +1,14 @@
 <script lang="ts">
   import Pictures from "$lib/components/pictures.svelte";
+  import Ornament from "$lib/components/ornament.svelte";
   import type { PageData } from "./$types";
 
-  let { data } = $props<{ data: PageData }>();
+  let { data }: { data: PageData } = $props();
 </script>
 
 <section class="gallery-page">
   <h1 class="page-heading">Bilder</h1>
+  <Ornament />
   <div class="gallery-scroll">
     <Pictures images={data.images} />
   </div>
@@ -27,37 +29,18 @@
   .page-heading {
     flex: 0 0 auto;
     font-size: clamp(1.5rem, 4vw, 2.25rem);
-    margin: 0 0 1.25rem;
+    margin: 0;
     color: var(--text-color);
-    text-shadow: var(--text-shadow-strong);
   }
 
   .gallery-scroll {
-    flex: 1;
-    min-height: 0;
+    flex: 0 1 auto;
     width: 100%;
-    overflow-y: auto;
-    padding: 1.25rem;
-    background: var(--glass-bg);
-    backdrop-filter: var(--glass-blur) saturate(140%);
-    -webkit-backdrop-filter: var(--glass-blur) saturate(140%);
-    border: 1px solid var(--glass-border);
-    border-radius: 1.25rem;
-    box-shadow: var(--glass-shadow);
-    scrollbar-width: thin;
-    scrollbar-color: rgba(255, 255, 255, 0.5) transparent;
-  }
-
-  .gallery-scroll::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  .gallery-scroll::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.4);
-    border-radius: 999px;
-  }
-
-  .gallery-scroll::-webkit-scrollbar-track {
-    background: transparent;
+    display: flex;
+    align-items: center;
+    padding: 1.5rem 0;
+    margin: auto 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
   }
 </style>

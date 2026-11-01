@@ -1,59 +1,68 @@
-<section class="about">
-  <div class="about-text">
-    <h1 class="page-heading">Om oss</h1>
-    <p>
-      Lundvie Kermaik har funnits i lennartsfors sedan 1982. Vi som jobbar här
-      är Ole Bjervig och Karin Lundkvist.
-    </p>
-    <p>
-      Vi drejar brukskermaik och unika ting, främst i stengods. Allt görs för
-      hand och med eget framtagna glasyrer. Numera säljs våra saker endast här
-      direkt från verkstan.
-    </p>
-  </div>
-  <div class="about-image-col">
-    <div class="image-placeholder">
-      <span>FOTO KOMMER</span>
+<script lang="ts">
+  import Ornament from "$lib/components/ornament.svelte";
+  import aboutImage from "$lib/assets/Messenger_creation_2D361A61-A4C2-4FFE-B987-0D520B85BBF4.jpeg";
+</script>
+
+<section class="about-page">
+  <h1 class="page-heading">Om oss</h1>
+  <Ornament />
+  <div class="about-band">
+    <div class="about-text">
+      <p>
+        Lundvie Kermaik har funnits i lennartsfors sedan 1982. Vi som jobbar
+        här är Ole Bjervig och Karin Lundkvist.
+      </p>
+      <p>
+        Vi drejar brukskermaik och unika ting, främst i stengods. Allt görs för
+        hand och med eget framtagna glasyrer. Numera säljs våra saker endast här
+        direkt från verkstan.
+      </p>
+    </div>
+    <div class="about-image-col">
+      <img
+        class="about-image"
+        src={aboutImage}
+        alt="Ole Bjervig och Karin Lundkvist"
+      />
     </div>
   </div>
 </section>
 
 <style>
-  .about {
+  /* same structure as the Images page: title on top, content band below */
+  .about-page {
     display: flex;
     flex-direction: column;
-    align-items: stretch;
-    gap: 1.5rem;
+    align-items: center;
     width: 100%;
-    margin: auto;
-    max-width: 60rem;
+    flex: 1;
+    min-height: 0;
   }
 
-  @media (min-width: 768px) {
-    .about {
-      flex-direction: row;
-    }
+  .page-heading {
+    flex: 0 0 auto;
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+    margin: 0;
+    color: var(--text-color);
+  }
+
+  .about-band {
+    flex: 0 1 auto;
+    min-height: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+    padding: 1.5rem 0;
+    margin: auto 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
   }
 
   .about-text {
     flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: clamp(1.5rem, 3vw, 2.5rem);
-    background: var(--glass-bg);
-    backdrop-filter: var(--glass-blur) saturate(140%);
-    -webkit-backdrop-filter: var(--glass-blur) saturate(140%);
-    border: 1px solid var(--glass-border);
-    border-radius: 1.25rem;
-    box-shadow: var(--glass-shadow);
-  }
-
-  .page-heading {
-    font-size: clamp(1.5rem, 4vw, 2.25rem);
-    margin: 0 0 1.25rem;
-    color: var(--text-color);
-    text-shadow: var(--text-shadow-strong);
+    min-width: 0;
   }
 
   .about-text p {
@@ -61,7 +70,6 @@
     line-height: 1.6;
     margin: 0 0 1rem;
     color: var(--text-color);
-    text-shadow: var(--text-shadow-soft);
   }
 
   .about-text p:last-child {
@@ -70,29 +78,18 @@
 
   .about-image-col {
     flex: 1;
+    min-width: 0;
+    align-self: stretch;
+    min-height: 0;
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
-  .image-placeholder {
-    width: min(16rem, 80%);
-    aspect-ratio: 1;
-    border: 1.5px dashed var(--glass-border);
-    border-radius: 1.25rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--glass-bg);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
-    box-shadow: var(--glass-shadow);
-  }
-
-  .image-placeholder span {
-    font-size: 0.875rem;
-    letter-spacing: 0.15em;
-    color: var(--text-color);
-    text-shadow: var(--text-shadow-soft);
+  .about-image {
+    max-width: 100%;
+    max-height: 45vh;
+    object-fit: contain;
+    display: block;
   }
 </style>
