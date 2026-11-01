@@ -6,11 +6,10 @@
   <h1 class="page-heading">Kontakt</h1>
   <Ornament />
   <div class="contact-band">
-    <p>Verkstaden är öppen efter överenskommelse.</p>
-    <p>Vi svarar gärna på frågor om beställningar.</p>
     <div class="contact-details">
-      <span>info@keramikco.se</span>
-      <span>+46 70 123 45 67</span>
+      <span>info@lundviekeramik.se</span>
+      <span>+4676 114 7816</span>
+      <span>+4670 646 9114</span>
     </div>
   </div>
 </section>
@@ -41,22 +40,14 @@
     text-align: center;
     padding: 1.5rem 0;
     margin: auto 0;
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-  }
-
-  .contact-band p {
-    font-size: 1.0625rem;
-    margin: 0 0 0.5rem;
-    color: var(--text-color);
   }
 
   .contact-details {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-    margin-top: 1rem;
-    font-size: 1.0625rem;
+    font-size: 1.6rem;
+    gap: 1.5rem;
+    margin-top: 0.5rem 0;
     color: var(--accent);
   }
 </style>

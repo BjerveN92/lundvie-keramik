@@ -1,7 +1,7 @@
 <script lang="ts">
   import { page } from "$app/state";
   import logo from "$lib/assets/lundvie_keramik_logo.png";
-  import bgPhoto from "$lib/assets/bkrnd_1.jpg";
+  import bgPhoto from "$lib/assets/Messenger_creation_8FD094FB-71F8-470E-B830-5E8A95A3793A.jpeg";
   import "@fontsource-variable/josefin-sans";
   import "@fontsource-variable/josefin-sans/wght-italic.css";
   let { children } = $props();
@@ -10,8 +10,13 @@
 <div class="page-wrapper" style="--bg-photo: url({bgPhoto});">
   <header>
     <div class="logo-wrapper">
-      <a href="/" class="logo-link">
-        <img src={logo} alt="Lundvie Keramik" class="logo" />
+      <a
+        href="/"
+        class="logo-link"
+        aria-label="Lundvie Keramik"
+        style="--logo: url({logo});"
+      >
+        <img src={logo} alt="" class="logo" />
       </a>
     </div>
     <nav>
@@ -45,17 +50,17 @@
 
 <style>
   :global(:root) {
-    --color-beige: #f1ead9;
-    --color-beige-dark: #e3d9bf;
+    --color-beige: #050402;
+    --color-beige-dark: #ccbb90;
     --color-black: #0a0a0a;
-    --color-white: #ffffff;
+    --color-white: rgb(252, 252, 252);
 
     /* lines-only look: no panels, just hairlines and ornaments straight on
        the photo. Light text + a scrim keep it legible on any photo. */
-    --text-color: #f8f6f1;
-    --accent: #e6d3a8; /* sand */
+    --text-color: #b2cca8;
+    --accent: var(--text-color);
     --line: rgba(248, 246, 241, 0.5);
-    --text-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
+    --text-shadow: 0 1px 10px rgb(0, 0, 0);
   }
 
   :global(*),
@@ -124,9 +129,9 @@
   .page-wrapper::after {
     background: linear-gradient(
       180deg,
-      rgba(8, 8, 10, 0.6) 0%,
+      rgba(1, 1, 68, 0.877) 0%,
       rgba(8, 8, 10, 0.4) 40%,
-      rgba(8, 8, 10, 0.4) 70%,
+      rgba(0, 0, 0, 0.575) 70%,
       rgba(8, 8, 10, 0.65) 100%
     );
   }
@@ -139,22 +144,24 @@
     padding: clamp(0.75rem, 3vh, 2rem) 1.5rem 0.5rem;
   }
 
+  /* the logo is used as a mask over a solid colour, so any colour works */
   .logo-link {
     display: block;
+    background-color: var(--text-color);
+    mask: var(--logo) center / contain no-repeat;
+    -webkit-mask: var(--logo) center / contain no-repeat;
   }
 
   .logo {
     height: clamp(56px, 12vh, 110px);
     width: auto;
     display: block;
-    filter: brightness(0) invert(1) drop-shadow(0 2px 10px rgba(0, 0, 0, 0.45));
-    opacity: 0.9;
+    visibility: hidden; /* only keeps the size; the mask draws the logo */
   }
 
   nav {
     width: min(34rem, 90%);
     margin: 0 auto;
-    border-bottom: 1px solid var(--line);
   }
 
   nav ul {
@@ -205,7 +212,6 @@
 
   /* FOOTER */
   footer {
-    border-top: 1px solid var(--line);
     width: min(34rem, 90%);
     margin: 0 auto;
     padding: 0.875rem 1.5rem;

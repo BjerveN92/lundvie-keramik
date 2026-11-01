@@ -1,80 +1,115 @@
 <script lang="ts">
   import Ornament from "$lib/components/ornament.svelte";
+  import houseImage from "$lib/assets/Messenger_creation_8FD094FB-71F8-470E-B830-5E8A95A3793A.jpeg";
 </script>
 
 <section class="hero">
-  <p class="subtitle">SEDAN 1985</p>
+  <p class="subtitle">1982</p>
   <Ornament />
-  <h1 class="hero-heading">
-    Handgjord keramik <br /> från vår verkstad till ditt hem
-  </h1>
-  <p class="hero-body">
-    Varje pjäs formas, bränns och glaseras för hand. Inga två stycken är exakt
-    lika – och det är precis poängen.
-  </p>
-  <a href="/pictures" class="cta-btn">Se våra verk</a>
+  <h1 class="heading">Välkommen till Lundvie Keramik</h1>
+  <div class="band">
+    <!-- <img
+      class="image"
+      src={houseImage}
+      alt="Gamla Brukshandeln i Lennartsfors, där Lundvie Keramik finns"
+    /> -->
+    <div class="text">
+      <p class="intro">
+        Vi tillverkar bruksföremål i stengods<br />
+        som vi säljer direkt ifrån verkstaden.
+      </p>
+      <p class="intro">
+        Du finner oss mitt i centrala Lennartsfors<br />
+        på andra våningen i gamla Brukshandeln. <br />
+        Vi har öppet året om
+      </p>
+
+      <!-- <p class="label">/p> -->
+      <p class="season">Högsäsong</p>
+      <p class="hours">
+        1 juli – 2 aug 2026<br />
+        Onsdag – söndag 13.00 – 18.00
+      </p>
+      <p class="season">Lågsäsong</p>
+      <p class="hours">Ring före!</p>
+    </div>
+  </div>
 </section>
 
 <style>
+  /* All text sizes are plain px. Everything uses the one size set on .hero
+     except .heading and .season, which set their own. */
+
   .hero {
+    font-size: 22px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    max-width: 42rem;
-    margin: auto;
-    padding: clamp(1.75rem, 4vh, 3rem) clamp(1.5rem, 5vw, 3.5rem);
-    /* thin double frame: border + an inset hairline */
-    border: 1px solid var(--line);
-    outline: 1px solid var(--line);
-    outline-offset: -0.5rem;
+    width: 100%;
+    flex: 1;
+    min-height: 0;
   }
 
+  .band {
+    flex: 1 1 auto;
+    min-height: 0;
+    width: 100%;
+    max-width: 1000px;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .text {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .image {
+    flex: 1;
+    min-width: 0;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  /* "SEDAN 1985" */
   .subtitle {
-    font-size: 0.875rem;
     letter-spacing: 0.3em;
     margin: 0;
     color: var(--accent);
   }
 
-  .hero-heading {
-    font-size: clamp(1.75rem, 4.5vw, 2.75rem);
-    line-height: 1.25;
-    margin: 0 0 1.25rem;
-    color: var(--text-color);
-  }
-
-  .hero-body {
-    font-size: 1.0625rem;
-    max-width: 34rem;
-    line-height: 1.625;
+  /* "Välkommen till Lundvie Keramik" */
+  .heading {
+    font-size: 36px;
     margin: 0;
-    color: var(--text-color);
   }
 
-  .cta-btn {
-    margin-top: 2rem;
-    display: inline-block;
-    font-size: 1rem;
-    letter-spacing: 0.04em;
-    padding: 0.8rem 2.25rem;
-    border: 1px solid var(--line);
-    text-decoration: none;
+  /* the two intro paragraphs */
+  .intro {
+    margin: 1px;
+  }
+
+  /* "Vi har öppet året om" */
+  .label {
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    letter-spacing: 0.2em;
-    font-size: 0.8125rem;
-    color: var(--text-color);
-    background-color: transparent;
-    transition:
-      background-color 0.2s ease,
-      color 0.2s ease,
-      border-color 0.2s ease;
+    margin: 24px 0 0;
+    color: var(--accent);
   }
 
-  .cta-btn:hover {
-    background-color: var(--text-color);
-    border-color: var(--text-color);
-    color: var(--color-black);
-    text-shadow: none;
+  /* "Högsäsong" and "Lågsäsong" */
+  .season {
+    font-size: 28px;
+    font-weight: 600;
+    margin: 8px 0 0;
+    color: var(--accent);
+  }
+
+  /* dates, times and "Ring före!" */
+  .hours {
+    margin: 0;
   }
 </style>

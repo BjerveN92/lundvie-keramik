@@ -1,29 +1,27 @@
 <script lang="ts">
   import Ornament from "$lib/components/ornament.svelte";
-  import aboutImage from "$lib/assets/Messenger_creation_2D361A61-A4C2-4FFE-B987-0D520B85BBF4.jpeg";
+  import aboutImage from "$lib/assets/Messenger_creation_46D7D6B3-1823-41AD-83AE-72E00995145B.jpeg";
 </script>
 
 <section class="about-page">
   <h1 class="page-heading">Om oss</h1>
   <Ornament />
   <div class="about-band">
+    <img
+      class="about-image"
+      src={aboutImage}
+      alt="Ole Bjervig och Karin Lundkvist"
+    />
     <div class="about-text">
       <p>
-        Lundvie Kermaik har funnits i lennartsfors sedan 1982. Vi som jobbar
-        här är Ole Bjervig och Karin Lundkvist.
+        Vi som jobbar här är Ole Bjervig och Karin Lundkvist. <br />
+        Lundvie Kermaik har funnits i Lennartsfors sedan 1982.
       </p>
       <p>
-        Vi drejar brukskermaik och unika ting, främst i stengods. Allt görs för
+        Vi drejar brukskeramik och unika ting, främst i stengods. Allt görs för
         hand och med eget framtagna glasyrer. Numera säljs våra saker endast här
         direkt från verkstan.
       </p>
-    </div>
-    <div class="about-image-col">
-      <img
-        class="about-image"
-        src={aboutImage}
-        alt="Ole Bjervig och Karin Lundkvist"
-      />
     </div>
   </div>
 </section>
@@ -46,18 +44,27 @@
     color: var(--text-color);
   }
 
+  /* portrait photo shown whole at its own proportions, as tall as the page
+     allows, with the text beside it */
   .about-band {
-    flex: 0 1 auto;
+    flex: 1 1 auto;
     min-height: 0;
-    width: 100%;
+    width: min(100%, 70rem);
+    margin: 1.8rem 0 0;
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 2rem;
-    padding: 1.5rem 0;
-    margin: auto 0;
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
+    gap: clamp(1.5rem, 4vw, 3rem);
+  }
+
+  .about-image {
+    flex: 0 1 auto;
+    height: 100%;
+    width: auto;
+    min-width: 0;
+    max-width: 50%;
+    object-fit: contain;
+    display: block;
   }
 
   .about-text {
@@ -66,30 +73,13 @@
   }
 
   .about-text p {
-    font-size: 1.0625rem;
-    line-height: 1.6;
-    margin: 0 0 1rem;
+    font-size: clamp(1.0625rem, 2.4vh, 1.3rem);
+    line-height: 1.7;
+    margin: 0 0 1.25rem;
     color: var(--text-color);
   }
 
   .about-text p:last-child {
     margin-bottom: 0;
-  }
-
-  .about-image-col {
-    flex: 1;
-    min-width: 0;
-    align-self: stretch;
-    min-height: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .about-image {
-    max-width: 100%;
-    max-height: 45vh;
-    object-fit: contain;
-    display: block;
   }
 </style>

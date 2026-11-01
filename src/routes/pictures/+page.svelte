@@ -40,7 +40,5 @@
     align-items: center;
     padding: 1.5rem 0;
     margin: auto 0;
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
   }
 </style>
