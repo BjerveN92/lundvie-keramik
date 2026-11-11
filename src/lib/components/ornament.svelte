@@ -1,3 +1,35 @@
+<script lang="ts" module>
+  const plate = "M44 42 a16 16 0 1 0 32 0 a16 16 0 1 0 -32 0";
+  const plateInner = "M49.5 42 a10.5 10.5 0 1 0 21 0 a10.5 10.5 0 1 0 -21 0";
+  // little 12-ray flower in the middle of the plate
+  const plateStar = Array.from({ length: 12 }, (_, i) => {
+    const a = (i * Math.PI) / 6;
+    const p = (r: number) =>
+      `${(60 + r * Math.cos(a)).toFixed(2)} ${(42 + r * Math.sin(a)).toFixed(2)}`;
+    return `M${p(2.5)} L${p(i % 2 ? 6 : 8)}`;
+  }).join(" ");
+
+  const bowl = "M126 44 H154 C154 53 148 58 140 58 C132 58 126 53 126 44";
+  const bowlBand = "M127.5 48.5 C135 51 145 51 152.5 48.5";
+
+  const stick =
+    "M100 58 C100 55 104 54 110 54 C116 54 120 55 120 58 M108 54 C108 50 106 48 108 45 C109 43 108 42 107 40 H113 C112 42 111 43 112 45 C114 48 112 50 112 54";
+  const candle = "M108.5 40 V27 H111.5 V40 M110 27 V25";
+  const flame = "M110 13 C113.5 18 113.5 23 110 24 C106.5 23 106.5 18 110 13 Z";
+
+  // upright pitcher with a spout on the right and the foot at y=40
+  const body =
+    "M92 40 H112 M92 40 C84 38 82 30 86 22 C88 17 90 14 90 10 H112 C115 9 119 8 123 6 M112 40 C118 38 120 31 118 24 C117 19 114 16 114 12 L112 10";
+  const handle = "M87 16 C74 14 72 32 84 33";
+  const groove = "M87 24 C93 27 109 27 117 24";
+
+  // from the tilted spout tip down into the cup (pitcher group is shifted 95,18)
+  const streamPath = "M136 13 C143 14 146 20 146 29";
+
+  const cup = "M232 46 H250 C250 54 247 58 241 58 C235 58 232 54 232 46";
+  const cupHandle = "M250 48 C256 48 256 54 249.5 54";
+</script>
+
 <!-- Divider: a straight shelf with a plate, a candlestick (with a flickering
      candle), a pitcher and a cup. Everything draws itself in on load. Then, in
      an endless loop, the pitcher tips forward, pours into the cup for about two
@@ -46,40 +78,6 @@
   <path class="liquid" d="M235 54 H247" />
   <ellipse class="ripple" cx="241" cy="47.5" rx="3" ry="0.9" />
 </svg>
-
-<script lang="ts" module>
-  const plate =
-    "M44 42 a16 16 0 1 0 32 0 a16 16 0 1 0 -32 0";
-  const plateInner = "M49.5 42 a10.5 10.5 0 1 0 21 0 a10.5 10.5 0 1 0 -21 0";
-  // little 12-ray flower in the middle of the plate
-  const plateStar = Array.from({ length: 12 }, (_, i) => {
-    const a = (i * Math.PI) / 6;
-    const p = (r: number) =>
-      `${(60 + r * Math.cos(a)).toFixed(2)} ${(42 + r * Math.sin(a)).toFixed(2)}`;
-    return `M${p(2.5)} L${p(i % 2 ? 6 : 8)}`;
-  }).join(" ");
-
-  const bowl = "M126 44 H154 C154 53 148 58 140 58 C132 58 126 53 126 44";
-  const bowlBand = "M127.5 48.5 C135 51 145 51 152.5 48.5";
-
-  const stick =
-    "M100 58 C100 55 104 54 110 54 C116 54 120 55 120 58 M108 54 C108 50 106 48 108 45 C109 43 108 42 107 40 H113 C112 42 111 43 112 45 C114 48 112 50 112 54";
-  const candle = "M108.5 40 V27 H111.5 V40 M110 27 V25";
-  const flame = "M110 13 C113.5 18 113.5 23 110 24 C106.5 23 106.5 18 110 13 Z";
-
-  // upright pitcher with a spout on the right and the foot at y=40
-  const body =
-    "M92 40 H112 M92 40 C84 38 82 30 86 22 C88 17 90 14 90 10 H112 C115 9 119 8 123 6 M112 40 C118 38 120 31 118 24 C117 19 114 16 114 12 L112 10";
-  const handle = "M87 16 C74 14 72 32 84 33";
-  const groove = "M87 24 C93 27 109 27 117 24";
-
-  // from the tilted spout tip down into the cup (pitcher group is shifted 95,18)
-  const streamPath = "M136 13 C143 14 146 20 146 29";
-
-  const cup =
-    "M232 46 H250 C250 54 247 58 241 58 C235 58 232 54 232 46";
-  const cupHandle = "M250 48 C256 48 256 54 249.5 54";
-</script>
 
 <style>
   .ornament {
