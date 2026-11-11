@@ -60,17 +60,17 @@
     color: var(--text-color);
   }
 
-  /* portrait photo shown whole at its own proportions, as tall as the page
+  /* portrait photo shown whole at its own proportions, as tall as the space
      allows, with the text beside it */
   .about-band {
     flex: 1 1 auto;
     min-height: 0;
     width: min(100%, 70rem);
-    margin: 1.8rem 0 0;
+    margin: clamp(0.25rem, 1.5vh, 1.5rem) 0 0;
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: clamp(1.5rem, 4vw, 3rem);
+    gap: clamp(1rem, 3vw, 3rem);
   }
 
   .about-image {
@@ -78,7 +78,7 @@
     height: 100%;
     width: auto;
     min-width: 0;
-    max-width: 50%;
+    max-width: 45%;
     border-radius: 0.75rem;
     object-fit: contain;
     display: block;
@@ -89,14 +89,28 @@
     min-width: 0;
   }
 
+  /* follows both the screen height and width so the text always fits */
   .about-text p {
-    font-size: clamp(1.0625rem, 2.4vh, 1.3rem);
-    line-height: 1.7;
-    margin: 0 0 1.25rem;
+    font-size: clamp(0.8rem, min(2.1vh, 0.5rem + 0.9vw), 1.2rem);
+    line-height: 1.55;
+    margin: 0 0 clamp(0.3rem, 1.2vh, 1rem);
     color: var(--text-color);
   }
 
   .about-text p:last-child {
     margin-bottom: 0;
+  }
+
+  /* phones: there's no room for both the photo and the text without
+     scrolling, so the text gets the screen */
+  @media (max-width: 600px) {
+    .about-image {
+      display: none;
+    }
+
+    .about-text p {
+      font-size: clamp(0.75rem, min(3.6vw, 1.9vh), 1rem);
+      line-height: 1.45;
+    }
   }
 </style>

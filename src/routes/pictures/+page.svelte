@@ -15,8 +15,7 @@
 </section>
 
 <style>
-  /* Fills the remaining viewport height and never grows past it — the
-     grid inside scrolls on its own, so the page itself stays fixed. */
+  /* Fills the space under the header; the picture strip is centred in it. */
   .gallery-page {
     display: flex;
     flex-direction: column;
@@ -33,12 +32,15 @@
     color: var(--text-color);
   }
 
+  /* takes the space left under the heading; the pictures size themselves
+     to its height (see --picture-size in pictures.svelte) */
   .gallery-scroll {
-    flex: 0 1 auto;
+    flex: 1 1 auto;
+    min-height: 0;
     width: 100%;
     display: flex;
     align-items: center;
-    padding: 1.5rem 0;
-    margin: auto 0;
+    padding: clamp(0.25rem, 1.5vh, 1.5rem) 0;
+    container-type: size;
   }
 </style>

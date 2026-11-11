@@ -56,7 +56,13 @@
   .marquee {
     /* scales with the screen height so the images fill the space under the
        header instead of floating in it */
-    --picture-size: clamp(280px, 48dvh, 680px); /* thumbnail width/height */
+    /* as tall as the free space allows (cqh = height of the gallery area),
+       but never wider than 75% of the screen, so phones show more than one */
+    --picture-size: clamp(
+      120px,
+      min(100cqh - 1rem, 48dvh, 75vw),
+      680px
+    ); /* thumbnail width/height */
     --picture-gap: 1.25rem; /* space between thumbnails */
     --marquee-speed: 90s; /* time for one full loop — higher = slower */
 

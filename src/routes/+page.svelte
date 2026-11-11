@@ -37,11 +37,13 @@
 </section>
 
 <style>
-  /* All text sizes are plain px. Everything uses the one size set on .hero
-     except .heading and .season, which set their own. */
+  /* Text sizes scale with the screen, using whichever is smaller of the
+     width (vw) and the height (vh), between a min and a max — so the page
+     also fits on short laptop screens. Everything uses the one size set on
+     .hero except .heading and .season, which set their own. */
 
   .hero {
-    font-size: 22px;
+    font-size: clamp(0.85rem, min(0.6rem + 1.2vw, 2.5vh), 1.375rem);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -51,12 +53,16 @@
     min-height: 0;
   }
 
+  .hero p {
+    line-height: 1.5;
+  }
+
   .band {
-    flex: 1 1 auto;
-    min-height: 0;
     width: 100%;
     max-width: 1000px;
-    margin-top: 15px;
+    /* centred in the free space below the heading */
+    margin: auto 0;
+    padding-top: clamp(0.25rem, 1.5vh, 15px);
     display: flex;
     align-items: center;
     gap: 40px;
@@ -75,25 +81,33 @@
 
   /* "Välkommen till Lundvie Keramik" */
   .heading {
-    font-size: 36px;
+    font-size: clamp(1.3rem, min(1rem + 2vw, 4.5vh), 2.25rem);
     margin: 0;
   }
 
   /* the two intro paragraphs */
   .intro {
-    margin: 1px;
+    margin: 0 0 clamp(0.25rem, 1vh, 0.5rem);
   }
 
   /* "Högsäsong" and "Lågsäsong" */
   .season {
-    font-size: 28px;
+    font-size: clamp(1.05rem, min(0.8rem + 1.2vw, 3.3vh), 1.75rem);
     font-weight: 600;
-    margin: 8px 0 0;
+    margin: clamp(2px, 1vh, 8px) 0 0;
     color: var(--accent);
   }
 
   /* dates, times and "Ring före!" */
   .hours {
     margin: 0;
+  }
+
+  /* on phones the hand-placed line breaks would split lines oddly, so the
+     intro text wraps on its own instead */
+  @media (max-width: 600px) {
+    .intro br {
+      display: none;
+    }
   }
 </style>

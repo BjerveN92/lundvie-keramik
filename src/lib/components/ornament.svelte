@@ -84,9 +84,11 @@
 <style>
   .ornament {
     display: block;
-    width: min(20rem, 85%);
+    /* shrinks on short screens too (vh), so it never crowds the content */
+    width: min(20rem, 85%, 40vh);
     height: auto;
-    margin: 1rem auto;
+    flex: 0 0 auto;
+    margin: clamp(0.4rem, 1.8vh, 1rem) auto;
     overflow: visible;
     color: var(--accent);
     fill: none;

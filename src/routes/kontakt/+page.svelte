@@ -38,16 +38,17 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 1.5rem 0;
+    padding: clamp(0.5rem, 2vh, 1.5rem) 0;
     margin: auto 0;
   }
 
   .contact-details {
     display: flex;
     flex-direction: column;
-    font-size: 1.6rem;
-    gap: 1.5rem;
-    margin-top: 0.5rem 0;
+    font-size: clamp(1rem, min(1rem + 1vw, 3.5vh), 1.6rem);
+    gap: clamp(0.5rem, 2.5vh, 1.5rem);
+    margin: 0.5rem 0 0;
+    overflow-wrap: anywhere; /* the e-mail address never pokes out on phones */
     color: var(--accent);
   }
 </style>

@@ -117,7 +117,8 @@
     box-sizing: border-box;
   }
 
-  /* the site itself never scrolls — everything fits the viewport */
+  /* the site itself never scrolls — everything fits the viewport. Sizes and
+     spacing scale with the screen height (vh) so short screens still fit. */
   :global(html),
   :global(body) {
     height: 100%;
@@ -213,7 +214,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: clamp(0.75rem, 3vh, 2rem) 1.5rem 0.5rem;
+    padding: clamp(0.5rem, 2.5vh, 2rem) 1.5rem clamp(0.25rem, 0.8vh, 0.5rem);
   }
 
   /* the logo is used as a mask over a solid colour, so any colour works */
@@ -225,7 +226,7 @@
   }
 
   .logo {
-    height: clamp(56px, 12vh, 110px);
+    height: clamp(40px, 10vh, 110px);
     width: auto;
     display: block;
     visibility: hidden; /* only keeps the size; the mask draws the logo */
@@ -242,7 +243,7 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 0.25rem;
-    padding: 0.5rem 1rem 0.75rem;
+    padding: clamp(0.15rem, 0.8vh, 0.5rem) 1rem clamp(0.15rem, 1vh, 0.75rem);
     list-style: none;
     margin: 0;
   }
@@ -251,7 +252,7 @@
     font-size: 0.8125rem;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    padding: 0.5rem 1rem;
+    padding: clamp(0.3rem, 1vh, 0.5rem) 1rem;
     border-bottom: 1px solid transparent;
     text-decoration: none;
     color: var(--text-color);
@@ -277,16 +278,41 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: clamp(1.25rem, 4vh, 3.5rem) 1.5rem;
+    padding: clamp(0.5rem, 3vh, 3rem) 1.5rem;
     width: 100%;
     overflow: hidden;
+  }
+
+  /* PHONES */
+  @media (max-width: 600px) {
+    nav {
+      width: 100%;
+    }
+
+    nav ul {
+      gap: 0;
+      padding: 0.25rem 0.5rem 0.5rem;
+    }
+
+    nav a {
+      letter-spacing: 0.14em;
+      padding: 0.5rem 0.6rem;
+    }
+
+    main {
+      padding: clamp(0.5rem, 2vh, 1.25rem) 16px;
+    }
+
+    .logo {
+      height: clamp(36px, 8vh, 70px);
+    }
   }
 
   /* FOOTER */
   footer {
     width: min(34rem, 90%);
     margin: 0 auto;
-    padding: 0.875rem 1.5rem;
+    padding: clamp(0.35rem, 1.5vh, 0.875rem) 1.5rem;
     text-align: center;
     font-size: 0.75rem;
     letter-spacing: 0.25em;
