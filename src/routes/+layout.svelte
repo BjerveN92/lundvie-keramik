@@ -19,7 +19,7 @@
     { path: "/", src: bgPhoto }, // fallback, keep last
   ];
   const currentBg = $derived(
-    backgrounds.find((bg) => page.url.pathname.startsWith(bg.path))!
+    backgrounds.find((bg) => page.url.pathname.startsWith(bg.path))!,
   );
 
   // a photo only fades in once it's fully decoded, so it never appears
@@ -91,7 +91,7 @@
     {@render children()}
   </main>
 
-  <footer>© 2026 LUNDVIE KERAMIK</footer>
+  <footer>© 2026 made by Martin Bjervig</footer>
 </div>
 
 <style>

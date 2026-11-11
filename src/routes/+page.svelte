@@ -61,7 +61,7 @@
     width: 100%;
     max-width: 1000px;
     /* centred in the free space below the heading */
-    margin: auto 0;
+    margin: auto 1 0;
     padding-top: clamp(0.25rem, 1.5vh, 15px);
     display: flex;
     align-items: center;
