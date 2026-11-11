@@ -14,13 +14,28 @@
     />
     <div class="about-text">
       <p>
-        Vi som jobbar här är Ole Bjervig och Karin Lundkvist. <br />
-        Lundvie Kermaik har funnits i Lennartsfors sedan 1982.
+        Vi & vår verkstad har funnits här i Lennartsfors sedan 1982. Till en
+        början höll vi till i den gamla smedgården. Därefter flyttade vi själva
+        till kanalen medan verkstaden flyttade till Brukshandeln mitt i byn. Här
+        har vi sedan 1986 både verkstad med butik och 2014 också vårt boende.
       </p>
+
       <p>
-        Vi drejar brukskeramik och unika ting, främst i stengods. Allt görs för
-        hand och med eget framtagna glasyrer. Numera säljs våra saker endast här
-        direkt från verkstan.
+        Vi tillverkar mindre serier bruksföremål och unika ting främst i
+        stengods men ibland också röd lergods och porslin.
+      </p>
+
+      <p>
+        Allt görs för hand och med eget framtagna glasyrer. Materialet är
+        högbränt och tåligt, och går därför utmärkt att maskindiska. Materialet
+        har analyserats och är godkänt att använda till livsmedel.
+      </p>
+
+      <p>Våra produkter går endast att köpa här direkt från verkstaden.</p>
+
+      <p>
+        Våra keramik utbildningar har vi fått vid Bangholms keramik i Danmark,
+        Rönnowska skolan i Helsingborg samt Nyckelviksskolan på Lidingö.
       </p>
     </div>
   </div>
