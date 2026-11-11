@@ -21,20 +21,20 @@
     </div>
     <nav>
       <ul>
-        <li><a href="/" class:active={page.url.pathname === "/"}>Home</a></li>
+        <li><a href="/" class:active={page.url.pathname === "/"}>Hem</a></li>
         <li>
           <a href="/about" class:active={page.url.pathname === "/about"}
-            >About</a
+            >Om oss</a
           >
         </li>
         <li>
           <a href="/pictures" class:active={page.url.pathname === "/pictures"}
-            >Images</a
+            >Bildgalleri</a
           >
         </li>
         <li>
           <a href="/kontakt" class:active={page.url.pathname === "/kontakt"}
-            >Contact</a
+            >Kontakt</a
           >
         </li>
       </ul>

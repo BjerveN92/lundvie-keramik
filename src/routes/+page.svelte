@@ -67,14 +67,6 @@
     min-width: 0;
   }
 
-  .image {
-    flex: 1;
-    min-width: 0;
-    max-height: 100%;
-    object-fit: contain;
-  }
-
-  /* "SEDAN 1985" */
   .subtitle {
     letter-spacing: 0.3em;
     margin: 0;
@@ -90,14 +82,6 @@
   /* the two intro paragraphs */
   .intro {
     margin: 1px;
-  }
-
-  /* "Vi har öppet året om" */
-  .label {
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin: 24px 0 0;
-    color: var(--accent);
   }
 
   /* "Högsäsong" and "Lågsäsong" */
