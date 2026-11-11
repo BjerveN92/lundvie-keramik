@@ -14,15 +14,16 @@
     />
     <div class="about-text">
       <p>
-        Vi & vår verkstad har funnits här i Lennartsfors sedan 1982. Till en
-        början höll vi till i den gamla smedgården. Därefter flyttade vi själva
-        till kanalen medan verkstaden flyttade till Brukshandeln mitt i byn. Här
-        har vi sedan 1986 både verkstad med butik och 2014 också vårt boende.
+        Vi & vår verkstad har funnits här i Lennartsfors sedan 1982. <br /> Till
+        en början höll vi till i den gamla smedgården. Därefter flyttade vi
+        själva till kanalen medan verkstaden flyttade till Brukshandeln mitt i
+        byn. <br /> Här har vi sedan 1986 både verkstad med butik och 2014 också
+        vårt boende.
       </p>
 
       <p>
         Vi tillverkar mindre serier bruksföremål och unika ting främst i
-        stengods men ibland också röd lergods och porslin.
+        stengods men ibland också lergods och porslin.
       </p>
 
       <p>

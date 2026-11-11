@@ -1,13 +1,51 @@
 <script lang="ts">
   import { page } from "$app/state";
+  import { untrack } from "svelte";
   import logo from "$lib/assets/lundvie_keramik_logo.png";
   import bgPhoto from "$lib/assets/Messenger_creation_8FD094FB-71F8-470E-B830-5E8A95A3793A.jpeg";
+  import workshopPhoto from "$lib/assets/verkstan1.jpg";
   import "@fontsource-variable/josefin-sans";
   import "@fontsource-variable/josefin-sans/wght-italic.css";
   let { children } = $props();
+
+  // which background photo each page shows
+  const backgrounds = [bgPhoto, workshopPhoto];
+  const currentBg = $derived(
+    page.url.pathname.startsWith("/pictures") ? workshopPhoto : bgPhoto
+  );
+
+  // a photo only fades in once it's fully decoded, so it never appears
+  // half-loaded; until then the screen just stays black
+  // (the first page's photo counts as ready right away, so it's there on load)
+  let ready: Record<string, boolean> = $state({
+    [untrack(() => currentBg)]: true,
+  });
+
+  $effect(() => {
+    for (const src of backgrounds) {
+      if (ready[src]) continue;
+      const img = new Image();
+      img.src = src;
+      img
+        .decode()
+        .catch(() => {})
+        .then(() => (ready[src] = true));
+    }
+  });
 </script>
 
-<div class="page-wrapper" style="--bg-photo: url({bgPhoto});">
+<div class="page-wrapper">
+  <!-- one layer per photo: the old one fades to black, then the new one
+       fades up from black -->
+  {#each backgrounds as src (src)}
+    <div
+      class="bg"
+      class:visible={src === currentBg && ready[src]}
+      style="background-image: url({src});"
+      aria-hidden="true"
+    ></div>
+  {/each}
+
   <header>
     <div class="logo-wrapper">
       <a
@@ -111,22 +149,45 @@
     text-shadow: var(--text-shadow);
   }
 
-  /* full-bleed background photo + a dark scrim */
-  .page-wrapper::before,
+  /* full-bleed background photos + a dark scrim on top of them */
+  .bg,
   .page-wrapper::after {
-    content: "";
     position: absolute;
     inset: 0;
     z-index: -1;
   }
 
-  .page-wrapper::before {
-    background-image: var(--bg-photo);
+  /* fading out: quick dip to the black body colour */
+  .bg {
     background-size: cover;
     background-position: center;
+    opacity: 0;
+    transform: scale(1.03);
+    transition:
+      opacity 0.6s ease-in,
+      transform 0.6s ease-in;
+  }
+
+  /* fading in: waits for the old photo to reach black, then rises slowly
+     with a gentle settle from a slight zoom */
+  .bg.visible {
+    opacity: 1;
+    transform: scale(1);
+    transition:
+      opacity 1.1s ease-out 0.7s,
+      transform 2s ease-out 0.7s;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .bg,
+    .bg.visible {
+      transform: none;
+      transition: opacity 0.4s ease;
+    }
   }
 
   .page-wrapper::after {
+    content: "";
     background: linear-gradient(
       180deg,
       rgba(1, 1, 68, 0.877) 0%,

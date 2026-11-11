@@ -58,7 +58,7 @@
        header instead of floating in it */
     --picture-size: clamp(280px, 48dvh, 680px); /* thumbnail width/height */
     --picture-gap: 1.25rem; /* space between thumbnails */
-    --marquee-speed: 140s; /* time for one full loop — higher = slower */
+    --marquee-speed: 90s; /* time for one full loop — higher = slower */
 
     overflow: hidden;
     width: 100%;

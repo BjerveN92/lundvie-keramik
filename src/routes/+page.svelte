@@ -4,7 +4,7 @@
 </script>
 
 <section class="hero">
-  <p class="subtitle">1982</p>
+  <p class="subtitle">EST. 1982</p>
   <Ornament />
   <h1 class="heading">Välkommen till Lundvie Keramik</h1>
   <div class="band">
@@ -31,7 +31,7 @@
         Onsdag – söndag 13.00 – 18.00
       </p>
       <p class="season">Lågsäsong</p>
-      <p class="hours">Ring före!</p>
+      <p class="hours">Varierande öppetider – kontakta oss för mer info.</p>
     </div>
   </div>
 </section>
