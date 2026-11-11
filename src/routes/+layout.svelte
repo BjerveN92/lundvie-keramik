@@ -4,25 +4,33 @@
   import logo from "$lib/assets/lundvie_keramik_logo.png";
   import bgPhoto from "$lib/assets/Messenger_creation_8FD094FB-71F8-470E-B830-5E8A95A3793A.jpeg";
   import workshopPhoto from "$lib/assets/verkstan1.jpg";
+  import aboutPhoto from "$lib/assets/bkrnd_1.jpg";
+  import cupsPhoto from "$lib/assets/Messenger_creation_D8975E6A-430C-485D-920B-C1C75D5A16E7.jpeg";
   import "@fontsource-variable/josefin-sans";
   import "@fontsource-variable/josefin-sans/wght-italic.css";
   let { children } = $props();
 
-  // which background photo each page shows
-  const backgrounds = [bgPhoto, workshopPhoto];
+  // one background layer per page — pages may share a photo, but each
+  // still gets its own layer so every page change dips through black
+  const backgrounds = [
+    { path: "/about", src: aboutPhoto },
+    { path: "/pictures", src: workshopPhoto },
+    { path: "/kontakt", src: cupsPhoto },
+    { path: "/", src: bgPhoto }, // fallback, keep last
+  ];
   const currentBg = $derived(
-    page.url.pathname.startsWith("/pictures") ? workshopPhoto : bgPhoto
+    backgrounds.find((bg) => page.url.pathname.startsWith(bg.path))!
   );
 
   // a photo only fades in once it's fully decoded, so it never appears
   // half-loaded; until then the screen just stays black
   // (the first page's photo counts as ready right away, so it's there on load)
   let ready: Record<string, boolean> = $state({
-    [untrack(() => currentBg)]: true,
+    [untrack(() => currentBg.src)]: true,
   });
 
   $effect(() => {
-    for (const src of backgrounds) {
+    for (const { src } of backgrounds) {
       if (ready[src]) continue;
       const img = new Image();
       img.src = src;
@@ -35,13 +43,13 @@
 </script>
 
 <div class="page-wrapper">
-  <!-- one layer per photo: the old one fades to black, then the new one
+  <!-- one layer per page: the old one fades to black, then the new one
        fades up from black -->
-  {#each backgrounds as src (src)}
+  {#each backgrounds as bg (bg.path)}
     <div
       class="bg"
-      class:visible={src === currentBg && ready[src]}
-      style="background-image: url({src});"
+      class:visible={bg === currentBg && ready[bg.src]}
+      style="background-image: url({bg.src});"
       aria-hidden="true"
     ></div>
   {/each}
@@ -91,6 +99,8 @@
     --color-beige: #050402;
     --color-beige-dark: #ccbb90;
     --color-black: #0a0a0a;
+    /* the deep blue at the top of the scrim; also shown between photos */
+    --color-blue: rgb(1, 1, 68);
     --color-white: rgb(252, 252, 252);
 
     /* lines-only look: no panels, just hairlines and ornaments straight on
@@ -146,6 +156,7 @@
     height: 100dvh;
     overflow: hidden;
     isolation: isolate;
+    background-color: var(--color-blue); /* seen while photos change */
     text-shadow: var(--text-shadow);
   }
 

@@ -79,6 +79,7 @@
     width: auto;
     min-width: 0;
     max-width: 50%;
+    border-radius: 0.75rem;
     object-fit: contain;
     display: block;
   }

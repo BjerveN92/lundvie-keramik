@@ -107,12 +107,19 @@
   }
 
   .thumb {
+    /* `all: unset` must come first — it resets everything above it,
+       including border-radius */
     all: unset;
+    --picture-radius: 0.75rem;
     flex: 0 0 auto;
     width: var(--picture-size);
     display: block;
     cursor: pointer;
+    border-radius: var(--picture-radius);
+    /* the image zooms on hover; clipping here keeps its corners rounded.
+       will-change stops Safari from showing square corners mid-zoom. */
     overflow: hidden;
+    will-change: transform;
     box-shadow: 0 4px 18px rgba(42, 38, 34, 0.25);
     transition:
       transform 0.2s ease,
@@ -136,7 +143,7 @@
 
   .thumb:hover img {
     transform: scale(1.06);
-    filter: brightness(1.08);
+    filter: brightness(1.3);
   }
 
   dialog {
